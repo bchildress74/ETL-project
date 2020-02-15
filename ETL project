@@ -1,0 +1,10 @@
+ETL project report 
+Brett Childress 
+
+	
+	
+	I found a dataset on kaggle about income statistics that stored the data in two different csv files, (personal_info and income_info). The datasets were about 35,000 rows and shared a common id column that would make it easy to relate the tables in postge. 
+
+	Cleaning the data was fairly simple. The data was already close to the correct format required but i needed to use pandas to select the relavent colums and rename them using only lower-case characters because as i found postgre wont allow you to import into a already created table if the colums aren't labbled exactly alike. 
+
+When it came time to actually load my cleaned data to pgadmin, i initially ran into proablems exporting the data using pd.to_sql (mostly because i forgot my pgadmin server password). After solving the forgotten password issue i ran into a persistant error because i found out a single row had a 'M' character in a zip code column of my data causing it to be unable to laod into my sql table i had set to INT. I returned to pandas and removed the single row causing the issue and my data loaded into pgadmin with no issues. I have included my data cleaning .ipynb file if you wish to see my cleaning code.
